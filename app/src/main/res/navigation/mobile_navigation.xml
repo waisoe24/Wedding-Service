@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.wws.weddingservice.ui.packages.PackageFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_package" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_service"
+            app:destination="@id/nav_service" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_service"
+        android:name="com.wws.weddingservice.ui.service.ServiceFragment"
+        android:label="@string/menu_service"
+        tools:layout="@layout/fragment_service" >
+        <argument
+            android:name="services"
+            app:argType="com.wws.weddingservice.ui.packages.Package" />
+        <action
+            android:id="@+id/action_nav_service_to_nav_food"
+            app:destination="@id/nav_food" />
+        <action
+            android:id="@+id/action_nav_service_to_hallFragment"
+            app:destination="@id/hallFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_food"
+        android:name="com.wws.weddingservice.ui.food.FoodFragment"
+        android:label="@string/menu_food"
+        tools:layout="@layout/food_fragment" >
+        <argument
+            android:name="foodName"
+            app:argType="string"
+            android:defaultValue="Null" />
+        <action
+            android:id="@+id/action_nav_food_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/action_nav_food_to_hallDetailFragment"
+            app:destination="@id/hallDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_sPackage"
+        android:name="com.wws.weddingservice.ui.servicePackage.ServicePackageFragment"
+        android:label="@string/menu_sPackage"
+        tools:layout="@layout/service_package_fragment" />
+    <fragment
+        android:id="@+id/hallFragment"
+        android:name="com.wws.weddingservice.ui.hall.HallFragment"
+        android:label="hall_fragment"
+        tools:layout="@layout/hall_fragment" >
+        <argument
+            android:name="hallName"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetailFragment"
+        android:name="com.wws.weddingservice.ui.food.FoodDetailFragment"
+        android:label="fragment_food_detail"
+        tools:layout="@layout/fragment_food_detail" >
+        <argument
+            android:name="foodDetail"
+            app:argType="com.wws.weddingservice.ui.food.Food" />
+        <action
+            android:id="@+id/action_foodDetailFragment_to_hallDetailFragment"
+            app:destination="@id/hallDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hallDetailFragment"
+        android:name="com.wws.weddingservice.ui.hall.HallDetailFragment"
+        android:label="fragment_hall_detail"
+        tools:layout="@layout/fragment_hall_detail" >
+        <argument
+            android:name="hallDetail"
+            app:argType="com.wws.weddingservice.ui.hall.Hall" />
+        <action
+            android:id="@+id/action_hallDetailFragment_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment" />
+    </fragment>
+</navigation>
